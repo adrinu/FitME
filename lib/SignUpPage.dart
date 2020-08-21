@@ -1,15 +1,14 @@
-import 'package:fitness_app/SignUpPage.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -17,11 +16,11 @@ class _SignInState extends State<SignIn> {
             // Image
             Container(
               height: 300,
-              child: Image.asset('assets/images/workout.png'),
+              child: Image.asset('assets/images/signup.png'),
             ),
             // Motto
             Text(
-              "lets reach that goal.",
+              "we all start from somwhere.",
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
             ),
             // Email and Password Area
@@ -49,7 +48,6 @@ class _SignInState extends State<SignIn> {
                           border: InputBorder.none,
                         ),
                       ),
-                      //Password input
                       TextField(
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.vpn_key),
@@ -57,11 +55,20 @@ class _SignInState extends State<SignIn> {
                           border: InputBorder.none,
                         ),
                       ),
+                      //Password input
+                      TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.check_circle_outline),
+                          hintText: 'Confirm Password',
+                          border: InputBorder.none,
+                        ),
+                      ),
                       FlatButton( 
                           onPressed: () {
-                            print('User pressed -> Forgot Password');
+                            print('User pressed -> Has account');
+                            Navigator.pop(context);
                           },
-                          child: Text('Forgot Password?'))
+                          child: Text('Already have an account? Click here'))
                     ],
                   ),
                 ),
@@ -69,13 +76,13 @@ class _SignInState extends State<SignIn> {
             ),
             //Sign in button
             Padding(
-              padding: const EdgeInsets.all(35.0),
+              padding: const EdgeInsets.all(75.0),
               child: RaisedButton(
                 padding: EdgeInsets.fromLTRB(75, 15, 75, 15),
                 elevation: 10,
                 color: Colors.lightBlue[500],
                 child: Text(
-                  'SIGN IN',
+                  'SIGN UP',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w900,
@@ -87,31 +94,6 @@ class _SignInState extends State<SignIn> {
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () {
                   print("User pressed -> Sign In");
-                },
-              ),
-            ),
-            //Create a new account
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-              child: RaisedButton(
-                padding: EdgeInsets.fromLTRB(75, 15, 75, 15),
-                elevation: 10,
-                color: Colors.lightBlue[500],
-                child: Text(
-                  "CREATE ACCOUNT",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                    fontSize: 18,
-                    letterSpacing: 1.5,
-                  ),
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                onPressed: () {
-                  print('User pressed -> Create account');
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
                 },
               ),
             ),

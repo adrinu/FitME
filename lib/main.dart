@@ -1,6 +1,8 @@
 import 'package:fitness_app/FoodLog.dart';
-import 'package:flutter/material.dart';
 import 'package:fitness_app/SignInPage.dart';
+import 'package:flutter/material.dart';
+import 'package:fitness_app/SignUpPage.dart';
+import 'SignUpPage.dart';
 import 'package:fitness_app/Home.dart';
 
 void main() {
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LogFood()
+      home: SignIn()
     );
   }
 }
