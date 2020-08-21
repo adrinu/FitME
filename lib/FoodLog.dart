@@ -40,154 +40,118 @@ class _LogFoodState extends State<LogFood> {
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(hintText: 'Name'),
                         controller: getName,
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Enter a name';
-                          }
-                          return null;
-                        },
+                        validator: nameValidator,
                       ),
                       // Calories
                       Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Calories :',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontSize: 17,
-                              ),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Calories :',
+                            style: TextStyle(
+                              fontSize: 17,
                             ),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                                width: 75,
-                                child: TextFormField(
-                                  keyboardType: TextInputType.number,
-                                  controller: getCal,
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Enter a value';
-                                    }
-                                    if (int.parse(value) < 0) {
-                                      return 'Must be a positive integer';
-                                    }
-                                    return null;
-                                  },
-                                ))
-                          ]),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                            width: 75,
+                            child: TextFormField(
+                              textAlign: TextAlign.right,
+                              keyboardType: TextInputType.number,
+                              controller: getCal,
+                              validator: numValidator,
+                            ),
+                          ),
+                        ],
+                      ),
                       // # of Servings
                       Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Number of Servings:',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontSize: 17,
-                              ),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Number of Servings:',
+                            style: TextStyle(
+                              fontSize: 17,
                             ),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                                width: 75,
-                                child: TextFormField(
-                                  textAlign: TextAlign.right,
-                                  keyboardType: TextInputType.number,
-                                  controller: getServings,
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Enter a value';
-                                    }
-                                    if (int.parse(value) < 0) {
-                                      return 'Must be a positive integer';
-                                    }
-                                    return null;
-                                  },
-                                ))
-                          ]),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                            width: 75,
+                            child: TextFormField(
+                              textAlign: TextAlign.right,
+                              keyboardType: TextInputType.number,
+                              controller: getServings,
+                              validator: numValidator,
+                            ),
+                          ),
+                        ],
+                      ),
                       // Carbs
                       Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Carbohydrates:',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontSize: 17,
-                              ),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Carbohydrates:',
+                            style: TextStyle(
+                              fontSize: 17,
                             ),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                                width: 75,
-                                child: TextFormField(
-                                  keyboardType: TextInputType.number,
-                                  controller: getCarbs,
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Enter a value';
-                                    }
-                                    if (int.parse(value) < 0) {
-                                      return 'Must be a positive integer';
-                                    }
-                                    return null;
-                                  },
-                                ))
-                          ]),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                            width: 75,
+                            child: TextFormField(
+                              textAlign: TextAlign.right,
+                              keyboardType: TextInputType.number,
+                              controller: getCarbs,
+                              validator: numValidator,
+                            ),
+                          ),
+                        ],
+                      ),
                       // Protein
                       Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Protein:',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontSize: 17,
-                              ),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Protein:',
+                            style: TextStyle(
+                              fontSize: 17,
                             ),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                                width: 75,
-                                child: TextFormField(
-                                  keyboardType: TextInputType.number,
-                                  controller: getProtein,
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Enter a value';
-                                    }
-                                    if (int.parse(value) < 0) {
-                                      return 'Must be a positive integer';
-                                    }
-                                    return null;
-                                  },
-                                ))
-                          ]),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                            width: 75,
+                            child: TextFormField(
+                              textAlign: TextAlign.right,
+                              keyboardType: TextInputType.number,
+                              controller: getProtein,
+                              validator: numValidator,
+                            ),
+                          )
+                        ],
+                      ),
                       // Fats
                       Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Fats:',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontSize: 17,
-                              ),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Fats:',
+                            style: TextStyle(
+                              fontSize: 17,
                             ),
-                            Container(
-                                margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                                width: 75,
-                                child: TextFormField(
-                                  keyboardType: TextInputType.number,
-                                  controller: getFats,
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Enter a value';
-                                    }
-                                    if (int.parse(value) < 0) {
-                                      return 'Must be a positive integer';
-                                    }
-                                    return null;
-                                  },
-                                ))
-                          ]),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
+                            width: 75,
+                            child: TextFormField(
+                              textAlign: TextAlign.right,
+                              keyboardType: TextInputType.number,
+                              controller: getFats,
+                              validator: numValidator,
+                            ),
+                          ),
+                        ],
+                      ),
                       // Add Food Entry Button
                       RaisedButton(
                         color: Colors.lightBlue[400],
@@ -211,12 +175,9 @@ class _LogFoodState extends State<LogFood> {
                                   int.parse(getFats.text)),
                             );
                             // Adds value to total
-                            totalCalories += int.parse(getCal.text) *
-                                int.parse(getServings.text);
-                            totalServings += int.parse(getServings.text);
-                            totalCarbs += int.parse(getCarbs.text);
-                            totalProtein += int.parse(getProtein.text);
-                            totalFats += int.parse(getFats.text);
+                            addToTotal(getCal.text, getServings.text,
+                                getCarbs.text, getProtein.text, getFats.text);
+
                             //Clears TextField entries
                             getName.clear();
                             getCal.clear();
@@ -252,7 +213,8 @@ class _LogFoodState extends State<LogFood> {
                 width: double.maxFinite,
                 child: Card(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                   elevation: 10,
                   child: Column(
                     children: <Widget>[
@@ -306,7 +268,7 @@ class _LogFoodState extends State<LogFood> {
                                 fontSize: 25, fontFamily: 'Comfortaa'),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -345,12 +307,21 @@ class _LogFoodState extends State<LogFood> {
                                                 children: <Widget>[
                                                   Text(
                                                       'Are you sure you want to delete this food entry?'),
+                                                  SizedBox(height: 10),
                                                   Row(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
+                                                    mainAxisAlignment: MainAxisAlignment.center,
                                                     children: <Widget>[
                                                       RaisedButton(
-                                                        child: Text('No'),
+                                                        color: Colors.lightBlue[500],
+                                                        child: Text(
+                                                          'No',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18,
+                                                              letterSpacing:
+                                                                  1.5),
+                                                        ),
                                                         onPressed: () {
                                                           Navigator.pop(
                                                               context);
@@ -360,22 +331,13 @@ class _LogFoodState extends State<LogFood> {
                                                         width: 10,
                                                       ),
                                                       RaisedButton(
-                                                        child: Text('Yes'),
+                                                        color: Colors.lightBlue[500],
+                                                        child: Text('Yes',style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 18,
+                                                          letterSpacing: 1.5),),
                                                         onPressed: () {
-                                                          totalCalories -=
-                                                              foodEntries[i]
-                                                                      .calories *
-                                                                  foodEntries[i]
-                                                                      .servings;
-                                                          totalCarbs -=
-                                                              foodEntries[i]
-                                                                  .carbs;
-                                                          totalProtein -=
-                                                              foodEntries[i]
-                                                                  .protein;
-                                                          totalFats -=
-                                                              foodEntries[i]
-                                                                  .fats;
+                                                          subtractMacros(i);
                                                           Navigator.pop(
                                                               context);
                                                           foodEntries
@@ -414,12 +376,12 @@ class _LogFoodState extends State<LogFood> {
                                       text: foodEntries[i].fats.toString(),
                                     );
 
-                                    totalCalories -=
-                                        (int.parse(tempServings.text) *
-                                            int.parse(tempCalories.text));
-                                    totalProtein -= int.parse(tempProtein.text);
-                                    totalCarbs -= int.parse(tempCarbs.text);
-                                    totalFats -= int.parse(tempFats.text);
+                                    subFromTotal(
+                                        tempCalories.text,
+                                        tempServings.text,
+                                        tempCarbs.text,
+                                        tempProtein.text,
+                                        tempFats.text);
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
@@ -440,12 +402,7 @@ class _LogFoodState extends State<LogFood> {
                                                     decoration: InputDecoration(
                                                         hintText: 'Name'),
                                                     controller: tempName,
-                                                    validator: (value) {
-                                                      if (value.isEmpty) {
-                                                        return 'Enter a name';
-                                                      }
-                                                      return null;
-                                                    },
+                                                    validator: nameValidator,
                                                   ),
                                                   // Calories
                                                   Row(
@@ -468,67 +425,46 @@ class _LogFoodState extends State<LogFood> {
                                                             width: 50,
                                                             child:
                                                                 TextFormField(
+                                                                  textAlign: TextAlign.right,
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
                                                               controller:
                                                                   tempCalories,
                                                               validator:
-                                                                  (value) {
-                                                                if (value
-                                                                    .isEmpty) {
-                                                                  return 'Enter a value';
-                                                                }
-                                                                if (int.parse(
-                                                                        value) <
-                                                                    0) {
-                                                                  return 'Must be a positive integer';
-                                                                }
-                                                                return null;
-                                                              },
+                                                                  numValidator,
                                                             ))
                                                       ]),
                                                   // # of Servings
                                                   Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          'Number of Servings:',
-                                                          textAlign:
-                                                              TextAlign.right,
-                                                          style: TextStyle(
-                                                            fontSize: 17,
-                                                          ),
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Number of Servings:',
+                                                        style: TextStyle(
+                                                          fontSize: 17,
                                                         ),
-                                                        Container(
-                                                            margin: EdgeInsets
-                                                                .fromLTRB(0, 10,
-                                                                    0, 5),
-                                                            width: 50,
-                                                            child:
-                                                                TextFormField(
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .number,
-                                                              controller:
-                                                                  tempServings,
-                                                              validator:
-                                                                  (value) {
-                                                                if (value
-                                                                    .isEmpty) {
-                                                                  return 'Enter a value';
-                                                                }
-                                                                if (int.parse(
-                                                                        value) <
-                                                                    0) {
-                                                                  return 'Must be a positive integer';
-                                                                }
-                                                                return null;
-                                                              },
-                                                            ))
-                                                      ]),
+                                                      ),
+                                                      Container(
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                0, 10, 0, 5),
+                                                        width: 50,
+                                                        child: TextFormField(
+                                                          textAlign: TextAlign.right,
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .number,
+                                                          controller:
+                                                              tempServings,
+                                                          validator:
+                                                              numValidator,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                   // Carbs
                                                   Row(
                                                       mainAxisAlignment:
@@ -537,8 +473,6 @@ class _LogFoodState extends State<LogFood> {
                                                       children: [
                                                         Text(
                                                           'Carbohydrates:',
-                                                          textAlign:
-                                                              TextAlign.right,
                                                           style: TextStyle(
                                                             fontSize: 17,
                                                           ),
@@ -550,24 +484,14 @@ class _LogFoodState extends State<LogFood> {
                                                             width: 50,
                                                             child:
                                                                 TextFormField(
+                                                                  textAlign: TextAlign.right,
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
                                                               controller:
                                                                   tempCarbs,
                                                               validator:
-                                                                  (value) {
-                                                                if (value
-                                                                    .isEmpty) {
-                                                                  return 'Enter a value';
-                                                                }
-                                                                if (int.parse(
-                                                                        value) <
-                                                                    0) {
-                                                                  return 'Must be a positive integer';
-                                                                }
-                                                                return null;
-                                                              },
+                                                                  numValidator,
                                                             ))
                                                       ]),
                                                   // Protein
@@ -578,8 +502,6 @@ class _LogFoodState extends State<LogFood> {
                                                       children: [
                                                         Text(
                                                           'Protein:',
-                                                          textAlign:
-                                                              TextAlign.right,
                                                           style: TextStyle(
                                                             fontSize: 17,
                                                           ),
@@ -591,24 +513,14 @@ class _LogFoodState extends State<LogFood> {
                                                             width: 50,
                                                             child:
                                                                 TextFormField(
+                                                                  textAlign: TextAlign.right,
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
                                                               controller:
                                                                   tempProtein,
                                                               validator:
-                                                                  (value) {
-                                                                if (value
-                                                                    .isEmpty) {
-                                                                  return 'Enter a value';
-                                                                }
-                                                                if (int.parse(
-                                                                        value) <
-                                                                    0) {
-                                                                  return 'Must be a positive integer';
-                                                                }
-                                                                return null;
-                                                              },
+                                                                  numValidator,
                                                             ))
                                                       ]),
                                                   // Fats
@@ -619,8 +531,6 @@ class _LogFoodState extends State<LogFood> {
                                                     children: [
                                                       Text(
                                                         'Fats:',
-                                                        textAlign:
-                                                            TextAlign.right,
                                                         style: TextStyle(
                                                           fontSize: 17,
                                                         ),
@@ -631,22 +541,14 @@ class _LogFoodState extends State<LogFood> {
                                                                 0, 10, 0, 20),
                                                         width: 50,
                                                         child: TextFormField(
-                                                          keyboardType:
-                                                              TextInputType
-                                                                  .number,
-                                                          controller: tempFats,
-                                                          validator: (value) {
-                                                            if (value.isEmpty) {
-                                                              return 'Enter a value';
-                                                            }
-                                                            if (int.parse(
-                                                                    value) <
-                                                                0) {
-                                                              return 'Must be a positive integer';
-                                                            }
-                                                            return null;
-                                                          },
-                                                        ),
+                                                          textAlign: TextAlign.right,
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            controller:
+                                                                tempFats,
+                                                            validator:
+                                                                numValidator),
                                                       )
                                                     ],
                                                   ),
@@ -682,6 +584,11 @@ class _LogFoodState extends State<LogFood> {
                                                         foodEntries[i].carbs =
                                                             int.parse(
                                                                 tempCarbs.text);
+                                                        foodEntries[i]
+                                                                .servings =
+                                                            int.parse(
+                                                                tempServings
+                                                                    .text);
                                                         foodEntries[i].protein =
                                                             int.parse(
                                                                 tempProtein
@@ -690,20 +597,11 @@ class _LogFoodState extends State<LogFood> {
                                                             int.parse(
                                                                 tempFats.text);
 
-                                                        totalCalories +=
-                                                            (int.parse(
-                                                                    tempServings
-                                                                        .text) *
-                                                                int.parse(
-                                                                    tempCalories
-                                                                        .text));
-                                                        totalProtein +=
-                                                            int.parse(
-                                                                tempProtein
-                                                                    .text);
-                                                        totalCarbs += int.parse(
-                                                            tempCarbs.text);
-                                                        totalFats += int.parse(
+                                                        addToTotal(
+                                                            tempCalories.text,
+                                                            tempServings.text,
+                                                            tempCarbs.text,
+                                                            tempProtein.text,
                                                             tempFats.text);
 
                                                         //Clears TextField entries
@@ -802,7 +700,7 @@ class _LogFoodState extends State<LogFood> {
                                                     const EdgeInsets.fromLTRB(
                                                         8, 2, 8, 0),
                                                 child: Text(
-                                                  'Carbs: ' +
+                                                  'Total Carbs: ' +
                                                       foodEntries[i]
                                                           .carbs
                                                           .toString(),
@@ -816,7 +714,7 @@ class _LogFoodState extends State<LogFood> {
                                                     const EdgeInsets.fromLTRB(
                                                         8, 2, 8, 0),
                                                 child: Text(
-                                                  'Protein: ' +
+                                                  'Total Protein: ' +
                                                       foodEntries[i]
                                                           .protein
                                                           .toString(),
@@ -830,7 +728,7 @@ class _LogFoodState extends State<LogFood> {
                                                     const EdgeInsets.fromLTRB(
                                                         8, 2, 8, 0),
                                                 child: Text(
-                                                  'Fats: ' +
+                                                  'Total Fats: ' +
                                                       foodEntries[i]
                                                           .fats
                                                           .toString(),
