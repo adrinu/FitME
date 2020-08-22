@@ -1,9 +1,10 @@
-import 'package:fitness_app/FoodLog.dart';
-import 'package:fitness_app/SignInPage.dart';
+import 'package:fitness_app/Pages/FoodLog.dart';
+import 'package:fitness_app/Authencation/SignInPage.dart';
+import 'package:fitness_app/Pages/NavigatePages.dart';
 import 'package:flutter/material.dart';
-import 'package:fitness_app/SignUpPage.dart';
-import 'SignUpPage.dart';
-import 'package:fitness_app/Home.dart';
+import 'package:fitness_app/Authencation/SignUpPage.dart';
+import 'Authencation/SignUpPage.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SignIn()
+      
     );
   }
 }

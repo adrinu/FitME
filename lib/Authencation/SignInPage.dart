@@ -1,4 +1,5 @@
-import 'package:fitness_app/SignUpPage.dart';
+import 'package:fitness_app/Authencation/SignUpPage.dart';
+import 'package:fitness_app/Pages/NavigatePages.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -86,6 +87,7 @@ class _SignInState extends State<SignIn> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () {
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => NavigatePages()));
                   print("User pressed -> Sign In");
                 },
               ),

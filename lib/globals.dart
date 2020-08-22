@@ -1,12 +1,7 @@
-import 'package:fitness_app/Home.dart';
 import 'package:flutter/material.dart';
 
 //Global Variables
 var scroll = ScrollController();
-
-final swipePages = PageController(
-  initialPage: 2,
-);
 
 var getName = TextEditingController();
 var getCal = TextEditingController();

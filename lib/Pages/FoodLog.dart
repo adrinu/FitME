@@ -1,7 +1,7 @@
 import 'package:fitness_app/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'globals.dart';
+import '../globals.dart';
 
 class LogFood extends StatefulWidget {
   @override
@@ -14,7 +14,6 @@ class _LogFoodState extends State<LogFood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BuildBottomAppBar(),
       // Users can add a food
       floatingActionButton: FloatingActionButton(
         child: Icon(MdiIcons.plus),
