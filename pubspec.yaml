@@ -68,6 +68,9 @@ flutter:
     - family: Comfortaa
       fonts:
       - asset: assets/fonts/Comfortaa-Regular.ttf
+    - family: Varela
+      fonts:
+      - asset: assets/fonts/Varela-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
