@@ -49,6 +49,13 @@ flutter:
   assets:
     - assets/images/workout.png
     - assets/images/signup.png
+    - assets/images/dailyreport.png
+    - assets/images/chest.jpg
+    - assets/images/arm.png
+    - assets/images/leg.png
+    - assets/images/back.png
+    - assets/images/abs.png
+    - assets/images/shoulder.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

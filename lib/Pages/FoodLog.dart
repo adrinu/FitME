@@ -14,6 +14,7 @@ class _LogFoodState extends State<LogFood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       // Users can add a food
       floatingActionButton: FloatingActionButton(
         child: Icon(MdiIcons.plus),
@@ -214,18 +215,18 @@ class _LogFoodState extends State<LogFood> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  elevation: 10,
+                  elevation: 20,
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 10),
                       Text(
                         'Calories',
-                        style: TextStyle(fontSize: 35, fontFamily: 'Comfortaa'),
+                        style: TextStyle(fontSize: 35, fontFamily: 'Varela'),
                       ),
                       SizedBox(height: 10),
                       Text(
                         '$totalCalories',
-                        style: TextStyle(fontSize: 30, fontFamily: 'Comfortaa'),
+                        style: TextStyle(fontSize: 30, fontFamily: 'Varela'),
                       ),
                       SizedBox(height: 20),
                       Row(
@@ -234,17 +235,17 @@ class _LogFoodState extends State<LogFood> {
                           Text(
                             'Carbs',
                             style: TextStyle(
-                                fontSize: 25, fontFamily: 'Comfortaa'),
+                                fontSize: 25, fontFamily: 'Varela'),
                           ),
                           Text(
                             'Protein',
                             style: TextStyle(
-                                fontSize: 25, fontFamily: 'Comfortaa'),
+                                fontSize: 25, fontFamily: 'Varela'),
                           ),
                           Text(
                             'Fats',
                             style: TextStyle(
-                                fontSize: 25, fontFamily: 'Comfortaa'),
+                                fontSize: 25, fontFamily: 'Varela'),
                           ),
                         ],
                       ),
@@ -254,17 +255,17 @@ class _LogFoodState extends State<LogFood> {
                           Text(
                             '$totalCarbs',
                             style: TextStyle(
-                                fontSize: 25, fontFamily: 'Comfortaa'),
+                                fontSize: 25, fontFamily: 'Varela'),
                           ),
                           Text(
                             '$totalProtein',
                             style: TextStyle(
-                                fontSize: 25, fontFamily: 'Comfortaa'),
+                                fontSize: 25, fontFamily: 'Varela'),
                           ),
                           Text(
                             '$totalFats',
                             style: TextStyle(
-                                fontSize: 25, fontFamily: 'Comfortaa'),
+                                fontSize: 25, fontFamily: 'Varela'),
                           ),
                         ],
                       ),
