@@ -1,6 +1,9 @@
 import 'package:fitness_app/Authencation/SignUpPage.dart';
 import 'package:fitness_app/Pages/NavigatePages.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness_app/globals.dart';
+import 'package:fitness_app/functions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -8,6 +11,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,34 +40,52 @@ class _SignInState extends State<SignIn> {
                   topRight: Radius.circular(50.0),
                 ),
                 elevation: 10,
-                child: Container(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 40,
-                      ),
-                      //Email input
-                      TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          hintText: 'E-mail',
-                          border: InputBorder.none,
+                child: Form(
+                  key: formKey,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 40,
                         ),
-                      ),
-                      //Password input
-                      TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.vpn_key),
-                          hintText: 'Password',
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      FlatButton( 
-                          onPressed: () {
-                            print('User pressed -> Forgot Password');
+                        //Email input
+                        TextFormField(
+                          controller: signInEmail,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Email can not be empty!';
+                            }
+                            return null;
                           },
-                          child: Text('Forgot Password?'))
-                    ],
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.email),
+                            hintText: 'E-mail',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                        //Password input
+                        TextFormField(
+                          controller: signInPassword,
+                          obscureText: true,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Password can not be empty!';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.vpn_key),
+                            hintText: 'Password',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                        FlatButton(
+                            onPressed: () {
+                              print('User pressed -> Forgot Password');
+                            },
+                            child: Text('Forgot Password?'))
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -87,7 +109,9 @@ class _SignInState extends State<SignIn> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => NavigatePages()));
+                  if (formKey.currentState.validate()) {
+                    signIn(formatString(signInEmail.text), formatString(signInPassword.text));
+                  }
                   print("User pressed -> Sign In");
                 },
               ),
@@ -113,7 +137,8 @@ class _SignInState extends State<SignIn> {
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () {
                   print('User pressed -> Create account');
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUp()));
                 },
               ),
             ),
@@ -122,5 +147,52 @@ class _SignInState extends State<SignIn> {
         ),
       ),
     );
+  }
+
+  /// ----------------------------------------
+  ///             AUTHENICATION
+  /// ----------------------------------------
+
+  void signIn(email, password) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    auth
+        .signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        )
+        .then((value) => {
+          dispose(),
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => NavigatePages()))
+            })
+        .catchError((onError) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Uh oh!"),
+            content: Text(onError.message),
+            actions: [
+              RaisedButton(
+                child: Text("O K"),
+                onPressed: () {
+                  Navigator.pop(context);
+                  signUpPassword.clear();
+                  signUpEmail.clear();
+                  signUpConfirmPassword.clear();
+                },
+              )
+            ],
+          );
+        },
+      );
+    });
+  }
+  void dispose() {
+    super.dispose();
+    signUpEmail.dispose();
+    signUpPassword.dispose();
+    signUpConfirmPassword.dispose();
   }
 }

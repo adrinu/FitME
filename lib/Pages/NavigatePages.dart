@@ -1,7 +1,6 @@
 import 'package:fitness_app/Pages/DailyReport.dart';
 import 'package:fitness_app/Pages/FoodLog.dart';
 import 'package:fitness_app/Pages/WorkoutLog.dart';
-import 'package:fitness_app/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 

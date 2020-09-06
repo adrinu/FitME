@@ -1,4 +1,3 @@
-import 'package:fitness_app/functions.dart';
 import 'package:flutter/material.dart';
 
 class DailyReport extends StatefulWidget {

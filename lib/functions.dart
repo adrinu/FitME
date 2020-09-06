@@ -1,10 +1,5 @@
-import 'package:fitness_app/Pages/DailyReport.dart';
-import 'package:fitness_app/Pages/WorkoutLog.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:fitness_app/Pages/FoodLog.dart';
 import 'package:fitness_app/globals.dart';
-
 
 //Classes
 class NutritionInfo {
@@ -25,7 +20,51 @@ class NutritionInfo {
   }
 }
 
+class Exercise {
+  String name;
+  String muscleGroup;
+  String whatEquipment;
+  String typeOfMovement;
+  String info;
+
+  Exercise(name, muscleGroup, whatEquipment, typeOfMovement) {
+    this.name = name;
+    this.muscleGroup = muscleGroup;
+    this.whatEquipment = whatEquipment;
+    this.typeOfMovement = typeOfMovement;
+    this.info = '';
+  }
+}
+
 // Widgets
+
+
+
+//
+String passwordValidator(String password) {
+  if (password.isEmpty) {
+    return 'Enter a password';
+  }
+  return null;
+}
+
+String confirmPasswordValidator(String password) {
+  if (formatString(signUpPassword.text) !=
+      formatString(signUpConfirmPassword.text)) {
+    return 'Passwords do not match';
+  }
+  return null;
+}
+
+String emailValidator(String email) {
+  if (email.isEmpty) {
+    return 'Enter a email';
+  }
+  if (!email.contains("@")) {
+    return 'Enter a email';
+  }
+  return null;
+}
 
 // Validates the name of Food when adding/editing entry
 String nameValidator(String name) {
@@ -75,4 +114,9 @@ void subFromTotal(cal, servings, carbs, protein, fats) {
   totalCarbs -= (int.parse(carbs) * int.parse(servings));
   totalProtein -= (int.parse(protein) * int.parse(servings));
   totalFats -= (int.parse(fats) * int.parse(servings));
+}
+
+//Formats strings to a string and trims whitespaces, returns a string
+String formatString(string) {
+  return string.toString().trim();
 }

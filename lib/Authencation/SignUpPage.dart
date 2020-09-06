@@ -1,4 +1,8 @@
+import 'package:fitness_app/Pages/NavigatePages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness_app/globals.dart';
+import 'package:fitness_app/functions.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -6,9 +10,15 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final formKey = GlobalKey<FormState>();
+  String email;
+  String password;
+
+  String errorMessage;
+
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -35,41 +45,54 @@ class _SignUpState extends State<SignUp> {
                 ),
                 elevation: 10,
                 child: Container(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 40,
-                      ),
-                      //Email input
-                      TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          hintText: 'E-mail',
-                          border: InputBorder.none,
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 40,
                         ),
-                      ),
-                      TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.vpn_key),
-                          hintText: 'Password',
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      //Password input
-                      TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.check_circle_outline),
-                          hintText: 'Confirm Password',
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      FlatButton( 
-                          onPressed: () {
-                            print('User pressed -> Has account');
-                            Navigator.pop(context);
+                        //Email input
+                        TextFormField(
+                          controller: signUpEmail,
+                          onSaved: (value) {
+                            email = value;
                           },
-                          child: Text('Already have an account? Click here'))
-                    ],
+                          validator: emailValidator,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.email),
+                            hintText: 'E-mail',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                        //Password  input
+                        TextFormField(
+                          controller: signUpPassword,
+                          validator: passwordValidator,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.vpn_key),
+                            hintText: 'Password',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                        //Password confirm input
+                        TextFormField(
+                          controller: signUpConfirmPassword,
+                          validator: confirmPasswordValidator,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.check_circle_outline),
+                            hintText: 'Confirm Password',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                        FlatButton(
+                            onPressed: () {
+                              print('User pressed -> Has account');
+                              Navigator.pop(context);
+                            },
+                            child: Text('Already have an account? Click here'))
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -93,7 +116,10 @@ class _SignUpState extends State<SignUp> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () {
-                  print("User pressed -> Sign In");
+                  print("User pressed -> Sign Up");
+                  if (formKey.currentState.validate()) {
+                    createAccount(formatString(signUpEmail.text), formatString(signUpPassword.text));
+                  }
                 },
               ),
             ),
@@ -102,5 +128,50 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+
+  /// ----------------------------------------
+  ///             AUTHENICATION
+  /// ----------------------------------------
+  
+  void createAccount(email, password) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    auth
+        .createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        )
+        .then((value) => {
+              Navigator.pop(context),
+              dispose()
+            })
+        .catchError((onError) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Uh oh!"),
+            content: Text(onError.message),
+            actions: [
+              RaisedButton(
+                child: Text("O K"),
+                onPressed: () {
+                  Navigator.pop(context);
+                  signUpPassword.clear();
+                  signUpEmail.clear();
+                  signUpConfirmPassword.clear();
+                },
+              )
+            ],
+          );
+        },
+      );
+    });
+  }
+  void dispose() {
+    super.dispose();
+    signUpEmail.dispose();
+    signUpPassword.dispose();
+    signUpConfirmPassword.dispose();
   }
 }
