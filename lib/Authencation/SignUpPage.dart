@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fitness_app/globals.dart';
 import 'package:fitness_app/functions.dart';
 
 class SignUp extends StatefulWidget {
@@ -12,6 +11,10 @@ class _SignUpState extends State<SignUp> {
   final formKey = GlobalKey<FormState>();
   String email;
   String password;
+
+  final signUpEmail = TextEditingController();
+  final signUpPassword = TextEditingController();
+  final signUpConfirmPassword = TextEditingController();
 
   String errorMessage;
 
@@ -183,5 +186,13 @@ class _SignUpState extends State<SignUp> {
     signUpEmail.dispose();
     signUpPassword.dispose();
     signUpConfirmPassword.dispose();
+  }
+
+  String confirmPasswordValidator(String password) {
+    if (formatString(signUpPassword.text) !=
+        formatString(signUpConfirmPassword.text)) {
+      return 'Passwords do not match';
+    }
+    return null;
   }
 }
