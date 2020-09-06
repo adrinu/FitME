@@ -1,3 +1,3 @@
-# FitnessApp  
+# FitME
 
 An application where users can track their calories and workouts.
