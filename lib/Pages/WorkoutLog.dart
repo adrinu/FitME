@@ -1,4 +1,4 @@
-import 'package:fitness_app/functions.dart';
+import 'package:fitness_app/Pages/Exercises/Arm.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutLog extends StatefulWidget {
@@ -38,10 +38,18 @@ class _WorkoutLogState extends State<WorkoutLog> {
                           height: 175,
                           child: Card(
                             elevation: 10,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image(
-                                image: AssetImage("assets/images/arm.png"),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ArmPage()));
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image(
+                                  image: AssetImage("assets/images/arm.png"),
+                                ),
                               ),
                             ),
                             shape: RoundedRectangleBorder(
@@ -186,7 +194,9 @@ class _WorkoutLogState extends State<WorkoutLog> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image(
-                                image: AssetImage("assets/images/shoulder.png",  ),
+                                image: AssetImage(
+                                  "assets/images/shoulder.png",
+                                ),
                               ),
                             ),
                             shape: RoundedRectangleBorder(
@@ -206,7 +216,51 @@ class _WorkoutLogState extends State<WorkoutLog> {
                     ),
                   ],
                 ),
-              )
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Text(
+                      "My Workout",
+                      style: TextStyle(
+                        fontFamily: "Varela",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 50,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: IconButton(
+                        color: Colors.lightBlue[500],
+                        icon: Icon(Icons.search, size: 45),
+                        onPressed: () {}),
+                  )
+                ],
+              ),
+              // Flexible(
+              //   fit: FlexFit.loose,
+              //   child: ListView.builder(
+              //     itemCount: myExercises.length,
+              //     itemBuilder: (BuildContext context, int i) {
+              //       return Card(
+              //         child: InkWell(
+              //           onTap:
+              //               () {}, //Displays Info about how to do the exercise
+              //           child: ListTile(
+              //             title: Text('Tricep Extensions'),
+              //             subtitle: Text('Isolation Movement'),
+              //             trailing: IconButton(
+              //                 icon: Icon(Icons.add),
+              //                 onPressed: () {}), // Adds exercise to workouts
+              //           ),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // )
             ],
           ),
         ),
