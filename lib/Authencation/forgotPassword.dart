@@ -8,17 +8,32 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   var forgotPassword = TextEditingController();
   String message;
-  final successSnackBar = SnackBar(content: Text("Email sent!"));
-  final failSnackBar =
-      SnackBar(content: Text("Something went wrong! Try again in a few!"));
+
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  _sentEmail() {
+    final sb = SnackBar(content: Text("Email sent!"));
+    _scaffoldKey.currentState.showSnackBar(sb);
+  }
+
+  _failEmail(error) {
+    final sb =
+        SnackBar(content: Text("Something went wrong! $error"));
+    _scaffoldKey.currentState.showSnackBar(sb);
+  }
+
   Future<void> sendPasswordResetEmail(String email) async {
-    await auth.sendPasswordResetEmail(email: email).then((value) => {
-          Navigator.pop(context),
-          dispose(),
+    await auth
+        .sendPasswordResetEmail(email: email)
+        .then((value) => {
+              _sentEmail()
+              //dispose(),
+            })
+        .catchError((onError) {
+          _failEmail(onError.message);
         });
   }
 
@@ -31,6 +46,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
