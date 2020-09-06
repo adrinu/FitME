@@ -3,6 +3,7 @@ import 'package:fitness_app/Pages/NavigatePages.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/globals.dart';
 import 'package:fitness_app/functions.dart';
+import 'forgotPassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignIn extends StatefulWidget {
@@ -12,6 +13,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final formKey = GlobalKey<FormState>();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,12 +53,7 @@ class _SignInState extends State<SignIn> {
                         //Email input
                         TextFormField(
                           controller: signInEmail,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Email can not be empty!';
-                            }
-                            return null;
-                          },
+                          validator: emailValidator,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email),
                             hintText: 'E-mail',
@@ -67,12 +64,7 @@ class _SignInState extends State<SignIn> {
                         TextFormField(
                           controller: signInPassword,
                           obscureText: true,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Password can not be empty!';
-                            }
-                            return null;
-                          },
+                          validator: passwordValidator,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.vpn_key),
                             hintText: 'Password',
@@ -82,6 +74,7 @@ class _SignInState extends State<SignIn> {
                         FlatButton(
                             onPressed: () {
                               print('User pressed -> Forgot Password');
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword()));
                             },
                             child: Text('Forgot Password?'))
                       ],
@@ -110,7 +103,8 @@ class _SignInState extends State<SignIn> {
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () {
                   if (formKey.currentState.validate()) {
-                    signIn(formatString(signInEmail.text), formatString(signInPassword.text));
+                    signIn(formatString(signInEmail.text),
+                        formatString(signInPassword.text));
                   }
                   print("User pressed -> Sign In");
                 },
@@ -162,7 +156,7 @@ class _SignInState extends State<SignIn> {
           password: password,
         )
         .then((value) => {
-          dispose(),
+              dispose(),
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => NavigatePages()))
             })
@@ -189,6 +183,7 @@ class _SignInState extends State<SignIn> {
       );
     });
   }
+
   void dispose() {
     super.dispose();
     signUpEmail.dispose();

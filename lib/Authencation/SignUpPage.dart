@@ -1,4 +1,3 @@
-import 'package:fitness_app/Pages/NavigatePages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/globals.dart';
@@ -31,7 +30,10 @@ class _SignUpState extends State<SignUp> {
             // Motto
             Text(
               "we all start from somwhere.",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w900,
+              ),
             ),
             // Email and Password Area
             Padding(
@@ -86,11 +88,12 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         FlatButton(
-                            onPressed: () {
-                              print('User pressed -> Has account');
-                              Navigator.pop(context);
-                            },
-                            child: Text('Already have an account? Click here'))
+                          onPressed: () {
+                            print('User pressed -> Has account');
+                            Navigator.pop(context);
+                          },
+                          child: Text('Already have an account? Click here'),
+                        ),
                       ],
                     ),
                   ),
@@ -114,11 +117,15 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 onPressed: () {
                   print("User pressed -> Sign Up");
                   if (formKey.currentState.validate()) {
-                    createAccount(formatString(signUpEmail.text), formatString(signUpPassword.text));
+                    createAccount(
+                      formatString(signUpEmail.text),
+                      formatString(signUpPassword.text),
+                    );
                   }
                 },
               ),
@@ -133,7 +140,7 @@ class _SignUpState extends State<SignUp> {
   /// ----------------------------------------
   ///             AUTHENICATION
   /// ----------------------------------------
-  
+
   void createAccount(email, password) {
     FirebaseAuth auth = FirebaseAuth.instance;
     auth
@@ -141,10 +148,12 @@ class _SignUpState extends State<SignUp> {
           email: email,
           password: password,
         )
-        .then((value) => {
-              Navigator.pop(context),
-              dispose()
-            })
+        .then(
+          (value) => {
+            Navigator.pop(context),
+            dispose(),
+          },
+        )
         .catchError((onError) {
       showDialog(
         context: context,
@@ -168,6 +177,7 @@ class _SignUpState extends State<SignUp> {
       );
     });
   }
+
   void dispose() {
     super.dispose();
     signUpEmail.dispose();
