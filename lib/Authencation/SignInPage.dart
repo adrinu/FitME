@@ -1,7 +1,6 @@
 import 'package:fitness_app/Authencation/SignUpPage.dart';
 import 'package:fitness_app/Pages/NavigatePages.dart';
 import 'package:flutter/material.dart';
-import 'package:fitness_app/globals.dart';
 import 'package:fitness_app/functions.dart';
 import 'forgotPassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,7 +12,10 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final formKey = GlobalKey<FormState>();
-  
+
+  final signInEmail = TextEditingController();
+  final signInPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +76,10 @@ class _SignInState extends State<SignIn> {
                         FlatButton(
                             onPressed: () {
                               print('User pressed -> Forgot Password');
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ForgotPassword()));
                             },
                             child: Text('Forgot Password?'))
                       ],
@@ -172,9 +177,8 @@ class _SignInState extends State<SignIn> {
                 child: Text("O K"),
                 onPressed: () {
                   Navigator.pop(context);
-                  signUpPassword.clear();
-                  signUpEmail.clear();
-                  signUpConfirmPassword.clear();
+                  signInPassword.clear();
+                  signInEmail.clear();
                 },
               )
             ],
@@ -186,8 +190,7 @@ class _SignInState extends State<SignIn> {
 
   void dispose() {
     super.dispose();
-    signUpEmail.dispose();
-    signUpPassword.dispose();
-    signUpConfirmPassword.dispose();
+    signInEmail.dispose();
+    signInPassword.dispose();
   }
 }

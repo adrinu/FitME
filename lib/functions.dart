@@ -47,13 +47,7 @@ String passwordValidator(String password) {
   return null;
 }
 
-String confirmPasswordValidator(String password) {
-  if (formatString(signUpPassword.text) !=
-      formatString(signUpConfirmPassword.text)) {
-    return 'Passwords do not match';
-  }
-  return null;
-}
+
 
 String emailValidator(String email) {
   if (email.isEmpty) {

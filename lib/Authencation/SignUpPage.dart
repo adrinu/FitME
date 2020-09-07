@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/functions.dart';
+import 'package:flushbar/flushbar.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -154,7 +155,14 @@ class _SignUpState extends State<SignUp> {
         .then(
           (value) => {
             Navigator.pop(context),
-            dispose(),
+            Flushbar(
+              margin: EdgeInsets.all(8),
+              borderRadius: 8,
+              backgroundColor: Colors.lightBlue[500],
+              duration: Duration(seconds: 5),
+              message: "Created Account! You can login now.",
+            ).show(context),
+            //dispose(),
           },
         )
         .catchError((onError) {

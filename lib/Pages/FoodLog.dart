@@ -9,8 +9,18 @@ class LogFood extends StatefulWidget {
 }
 
 class _LogFoodState extends State<LogFood> {
+
+  var scroll = ScrollController();
   final formKey = GlobalKey<FormState>();
   final editFormKey = GlobalKey<FormState>();
+
+  var getName = TextEditingController();
+  var getCal = TextEditingController();
+  var getServings = TextEditingController();
+  var getCarbs = TextEditingController();
+  var getProtein = TextEditingController();
+  var getFats = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -234,18 +244,18 @@ class _LogFoodState extends State<LogFood> {
                         children: [
                           Text(
                             'Carbs',
-                            style: TextStyle(
-                                fontSize: 25, fontFamily: 'Varela'),
+                            style:
+                                TextStyle(fontSize: 25, fontFamily: 'Varela'),
                           ),
                           Text(
                             'Protein',
-                            style: TextStyle(
-                                fontSize: 25, fontFamily: 'Varela'),
+                            style:
+                                TextStyle(fontSize: 25, fontFamily: 'Varela'),
                           ),
                           Text(
                             'Fats',
-                            style: TextStyle(
-                                fontSize: 25, fontFamily: 'Varela'),
+                            style:
+                                TextStyle(fontSize: 25, fontFamily: 'Varela'),
                           ),
                         ],
                       ),
@@ -254,18 +264,18 @@ class _LogFoodState extends State<LogFood> {
                         children: [
                           Text(
                             '$totalCarbs',
-                            style: TextStyle(
-                                fontSize: 25, fontFamily: 'Varela'),
+                            style:
+                                TextStyle(fontSize: 25, fontFamily: 'Varela'),
                           ),
                           Text(
                             '$totalProtein',
-                            style: TextStyle(
-                                fontSize: 25, fontFamily: 'Varela'),
+                            style:
+                                TextStyle(fontSize: 25, fontFamily: 'Varela'),
                           ),
                           Text(
                             '$totalFats',
-                            style: TextStyle(
-                                fontSize: 25, fontFamily: 'Varela'),
+                            style:
+                                TextStyle(fontSize: 25, fontFamily: 'Varela'),
                           ),
                         ],
                       ),
@@ -309,10 +319,13 @@ class _LogFoodState extends State<LogFood> {
                                                       'Are you sure you want to delete this food entry?'),
                                                   SizedBox(height: 10),
                                                   Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: <Widget>[
                                                       RaisedButton(
-                                                        color: Colors.lightBlue[500],
+                                                        color: Colors
+                                                            .lightBlue[500],
                                                         child: Text(
                                                           'No',
                                                           style: TextStyle(
@@ -331,11 +344,17 @@ class _LogFoodState extends State<LogFood> {
                                                         width: 10,
                                                       ),
                                                       RaisedButton(
-                                                        color: Colors.lightBlue[500],
-                                                        child: Text('Yes',style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 18,
-                                                          letterSpacing: 1.5),),
+                                                        color: Colors
+                                                            .lightBlue[500],
+                                                        child: Text(
+                                                          'Yes',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18,
+                                                              letterSpacing:
+                                                                  1.5),
+                                                        ),
                                                         onPressed: () {
                                                           subtractMacros(i);
                                                           Navigator.pop(
@@ -425,7 +444,9 @@ class _LogFoodState extends State<LogFood> {
                                                             width: 50,
                                                             child:
                                                                 TextFormField(
-                                                                  textAlign: TextAlign.right,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .right,
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
@@ -453,7 +474,8 @@ class _LogFoodState extends State<LogFood> {
                                                                 0, 10, 0, 5),
                                                         width: 50,
                                                         child: TextFormField(
-                                                          textAlign: TextAlign.right,
+                                                          textAlign:
+                                                              TextAlign.right,
                                                           keyboardType:
                                                               TextInputType
                                                                   .number,
@@ -484,7 +506,9 @@ class _LogFoodState extends State<LogFood> {
                                                             width: 50,
                                                             child:
                                                                 TextFormField(
-                                                                  textAlign: TextAlign.right,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .right,
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
@@ -513,7 +537,9 @@ class _LogFoodState extends State<LogFood> {
                                                             width: 50,
                                                             child:
                                                                 TextFormField(
-                                                                  textAlign: TextAlign.right,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .right,
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
@@ -541,7 +567,8 @@ class _LogFoodState extends State<LogFood> {
                                                                 0, 10, 0, 20),
                                                         width: 50,
                                                         child: TextFormField(
-                                                          textAlign: TextAlign.right,
+                                                            textAlign:
+                                                                TextAlign.right,
                                                             keyboardType:
                                                                 TextInputType
                                                                     .number,
