@@ -15,13 +15,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   _sentEmail() {
-    final sb = SnackBar(content: Text("Email sent!"));
+    final sb = SnackBar(content: Text("Email sent!"), backgroundColor: Colors.lightBlue[500],);
     _scaffoldKey.currentState.showSnackBar(sb);
   }
 
   _failEmail(error) {
     final sb =
-        SnackBar(content: Text("Something went wrong! $error"));
+        SnackBar(content: Text("Something went wrong! $error"), backgroundColor: Colors.lightBlue[500],);
     _scaffoldKey.currentState.showSnackBar(sb);
   }
 

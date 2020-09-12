@@ -48,7 +48,7 @@ class _AppState extends State<App> {
     // Show a loader until FlutterFire is initialized
     if (!_initialized) {
       return Container(
-        color: Colors.pink[900],
+        color: Colors.white,
       );
     }
 

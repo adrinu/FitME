@@ -9,7 +9,6 @@ class LogFood extends StatefulWidget {
 }
 
 class _LogFoodState extends State<LogFood> {
-
   var scroll = ScrollController();
   final formKey = GlobalKey<FormState>();
   final editFormKey = GlobalKey<FormState>();
@@ -24,7 +23,6 @@ class _LogFoodState extends State<LogFood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       // Users can add a food
       floatingActionButton: FloatingActionButton(
         child: Icon(MdiIcons.plus),
@@ -283,8 +281,7 @@ class _LogFoodState extends State<LogFood> {
                   ),
                 ),
               ),
-              // Displays nutritonal facts about the food that was entered
-              Flex(
+                Flex(
                 direction: Axis.vertical,
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -302,7 +299,8 @@ class _LogFoodState extends State<LogFood> {
                               child: Card(
                                 elevation: 10,
                                 child: InkWell(
-                                  // When user long presses the FoodEntry, it prompts an Alert to ask if they are sure they want to delete the food entry
+                                  // When user long presses the FoodEntry,
+                                  // it prompts an Alert to ask if they are sure they want to delete the food entry
                                   onLongPress: () {
                                     showDialog(
                                       context: context,
