@@ -1,7 +1,11 @@
 # FitME
 
-An application where users can track their calories and workouts.
+An iOS and Android application to help users to maintain or obtain a 
+healthy lifestyle.
 
+## Features
+* Log Daily calorie intake
+* Log Workouts 
 
 ## Pages
 ### Adding a food entry
