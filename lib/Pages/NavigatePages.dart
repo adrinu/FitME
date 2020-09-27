@@ -1,5 +1,6 @@
 import 'package:fitness_app/Pages/DailyReport.dart';
-import 'package:fitness_app/Pages/FoodLog.dart';
+import 'package:fitness_app/Pages/RevampFoodLog.dart';
+
 import 'package:fitness_app/Pages/WorkoutLog.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -11,7 +12,7 @@ class NavigatePages extends StatefulWidget {
 
 class _NavigatePagesState extends State<NavigatePages> {
   int currentPage = 1;
-  List<Widget> pages = [WorkoutLog(), DailyReport(), LogFood()];
+  List<Widget> pages = [WorkoutLog(), DailyReport(), FoodLog()];
   final swipePages = PageController(
     initialPage: 1,
     keepPage: true,
