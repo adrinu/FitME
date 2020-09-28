@@ -26,7 +26,7 @@ class _SignInState extends State<SignIn> {
             // Image
             Container(
               height: 300,
-              child: Image.asset('assets/images/workout.png'),
+              child: Image.asset('assets/images/Auth/workout.png'),
             ),
             // Motto
             Text(

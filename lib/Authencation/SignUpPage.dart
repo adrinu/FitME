@@ -29,7 +29,7 @@ class _SignUpState extends State<SignUp> {
             // Image
             Container(
               height: 300,
-              child: Image.asset('assets/images/signup.png'),
+              child: Image.asset('assets/images/Auth/signup.png'),
             ),
             // Motto
             Text(

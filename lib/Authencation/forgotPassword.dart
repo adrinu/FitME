@@ -54,7 +54,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             children: [
               Container(
                 height: 300,
-                child: Image.asset('assets/images/forgot.png'),
+                child: Image.asset('assets/images/Auth/forgot.png'),
               ),
               // Motto
               Padding(

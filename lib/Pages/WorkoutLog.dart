@@ -48,7 +48,7 @@ class _WorkoutLogState extends State<WorkoutLog> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Image(
-                                  image: AssetImage("assets/images/arm.png"),
+                                  image: AssetImage("assets/images/WorkoutsPage/arm.png"),
                                 ),
                               ),
                             ),
@@ -78,7 +78,7 @@ class _WorkoutLogState extends State<WorkoutLog> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image(
-                                image: AssetImage("assets/images/leg.png"),
+                                image: AssetImage("assets/images/WorkoutsPage/leg.png"),
                               ),
                             ),
                             shape: RoundedRectangleBorder(
@@ -107,7 +107,7 @@ class _WorkoutLogState extends State<WorkoutLog> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image(
-                                image: AssetImage("assets/images/chest.jpg"),
+                                image: AssetImage("assets/images/WorkoutsPage/chest.jpg"),
                               ),
                             ),
                             shape: RoundedRectangleBorder(
@@ -136,7 +136,7 @@ class _WorkoutLogState extends State<WorkoutLog> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image(
-                                image: AssetImage("assets/images/back.png"),
+                                image: AssetImage("assets/images/WorkoutsPage/back.png"),
                               ),
                             ),
                             shape: RoundedRectangleBorder(
@@ -165,7 +165,7 @@ class _WorkoutLogState extends State<WorkoutLog> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image(
-                                image: AssetImage("assets/images/abs.png"),
+                                image: AssetImage("assets/images/WorkoutsPage/abs.png"),
                               ),
                             ),
                             shape: RoundedRectangleBorder(
@@ -195,7 +195,7 @@ class _WorkoutLogState extends State<WorkoutLog> {
                               padding: const EdgeInsets.all(8.0),
                               child: Image(
                                 image: AssetImage(
-                                  "assets/images/shoulder.png",
+                                  "assets/images/WorkoutsPage/shoulder.png",
                                 ),
                               ),
                             ),
