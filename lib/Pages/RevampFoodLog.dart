@@ -24,8 +24,8 @@ class _FoodLogState extends State<FoodLog> with AutomaticKeepAliveClientMixin {
         foods.removeAt(val);
         foods.insert(val, newfood);
       });
-
     }
+
     Function(int) onDeleteVar = (int val) {
       setState(() {
         foods.removeAt(val);
@@ -34,7 +34,6 @@ class _FoodLogState extends State<FoodLog> with AutomaticKeepAliveClientMixin {
       });
     };
 
-    
     foodEntries = List<FoodCard>.generate(
       count,
       (int index) => FoodCard(
@@ -381,7 +380,8 @@ class FoodCard extends StatefulWidget {
 
   final Food aFood;
 
-  FoodCard({this.index, Key key, this.aFood, this.count, this.onDelete, this.onEdit})
+  FoodCard(
+      {this.index, Key key, this.aFood, this.count, this.onDelete, this.onEdit})
       : super(key: key);
 
   @override
@@ -399,7 +399,9 @@ class _FoodCardState extends State<FoodCard> {
         elevation: 10,
         child: InkWell(
           /* On Tap: Edits value of FoodCard */
-          onTap: () {editFood(context);},
+          onTap: () {
+            editFood(context);
+          },
           /* On Long Press: Deletes FoodCard */
           onLongPress: () {
             displayDeleteEntry(context);
@@ -416,6 +418,7 @@ class _FoodCardState extends State<FoodCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -440,13 +443,13 @@ class _FoodCardState extends State<FoodCard> {
                               ),
                             ),
                           ]),
-                      SizedBox(width: 190),
+                      //SizedBox(width: 165),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           /* Carbs*/
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 2, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                             child: Text(
                               "Carbs: " + widget.aFood.totalCarbs().toString(),
                               style: TextStyle(
@@ -455,7 +458,7 @@ class _FoodCardState extends State<FoodCard> {
                           ),
                           /* Protein */
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 2, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                             child: Text(
                               "Protein: " +
                                   widget.aFood.totalProtein().toString(),
@@ -465,7 +468,7 @@ class _FoodCardState extends State<FoodCard> {
                           ),
                           /* Fats */
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 2, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                             child: Text(
                               "Fats: " + widget.aFood.totalFats().toString(),
                               style: TextStyle(
@@ -656,10 +659,9 @@ class _FoodCardState extends State<FoodCard> {
                       num.parse(getCarbs.text),
                       num.parse(getProtein.text),
                       num.parse(getFats.text),
-                      );
+                    );
                     setState(() {
                       widget.onEdit(widget.index, temp);
-                    
                     });
                     Navigator.pop(context);
                     _dispose();
