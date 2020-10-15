@@ -4,9 +4,9 @@ An iOS and Android application to help users to maintain or obtain a
 healthy lifestyle.
 
 ## Features
-* Set a goal to lose or gain weight!
-* Log daily calorie intake
-* Log workouts 
+* (DONE) Log daily calorie intake
+* (WIP) Set a goal to lose or gain weight!
+* (WIP) Log workouts 
 
 ## Pages
 ### Adding a food entry
